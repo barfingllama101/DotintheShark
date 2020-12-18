@@ -1,27 +1,23 @@
-class Shark()
+class Shark
 {
     constructor(){
-        this.x = random(screen.width);
-        this.y = random(screen.height);
-        this.isActive = false;
+        this.x = random(50);
+        this.y = random(50);
     }
     
     display(imageKind, width, height){
-        if(this.isActive){
-            
         image(imageKind, this.x, this.y, width, height);
         
-        }
-        
-        bounce(){
+    }
+    bounce(){
             this.x = -this.x;
             this.y = -this.y;
             
         }
-        yeetSkeet(){
+    yeetSkeet(){
             
-            this.x += random(.5, 1);
-            this.y += random(.5, 1);
+            this.x += random(1,2);
+            this.y += random(1, 2);
         }
     
 }
