@@ -1,4 +1,4 @@
-let shark;
+/*let shark;
 
 let sHark;
 function preload(){
@@ -14,32 +14,23 @@ function distance(x1, x2, y1, y2){
 }
 
 function screenBounds(xCoord, yCoord){
-    if(yCoord + 5=== 0){
-        console.log("asdf");
-        sHark.y = 10;
-        sHark.y = -sHark.y;
-    }
-    if(yCoord >= screen.height - 200 ){
-        console.log("height greater than ");
-        sHark.y  -= 200;
-        sHark.bounce();
-        
-    }
-    if(xCoord - 5 === 0 || xCoord >= screen.width - 10){
-        console.log("asdf xxxxxx");
-        Shark.x = 0;
-        sHark.x = -sHark.x;
-    }
+   
     
 }
 function draw(){
      background("white");
-        sHark.display(shark, 100,200);
     
         sHark.yeetSkeet();
     
-    screenBounds(sHark.x, sHark.y);
+    if(sHark.x > 500 - 100 || sHark.x < 100){
+       sHark.xDirection * -1;
+   }
+    if (sHark.y > 500 - 100 || sHark.y < 100) {
+    sHark.yDirection *= -1;
+    }
+               sHark.display(shark, 100,100);
 
+ 
 }
 
 function setup(){
@@ -47,5 +38,57 @@ function setup(){
 
     sHark = new Shark();
     
+}*/
+
+let rgbarr = [];
+let sHark;
+let rad = 60; // Width of the shape
+
+let shark;
+function preload(){
+    
+    shark = loadImage("media/shark.png");
+}
+function setup() {
+    createCanvas(screen.width, screen.height);
+    noStroke();
+    frameRate(30);
+    ellipseMode(RADIUS);
+    sHark = new Shark();
+
+
+    
+
+}
+function mouseWithin(x, y, rad) {
+    let isinside;
+    if (dist(x, y, mouseX, mouseY) < rad) {
+        isinside = true;
+        return isinside;
+    }
+    return isinside;
+}
+
+function draw() {
+    background(102);
+    
+    if(mouseWithin(sHark.x, sHark.y, rad)){
+        sHark.yeetSkeet();
+    }
+    
+    // color based collsion too hefty hefty hefty ! 
+    //r : 47
+ //   g 199
+   // b 187
+ 
+    if(sHark.x > width - rad || sHark.x < rad){
+        sHark.xDirection *=-1;
+    }
+
+    if(sHark.y > height - rad || sHark.y < rad){
+        sHark.yDirection *=-1;
+        
+    }
+        sHark.display(shark); 
 }
 

@@ -1,23 +1,24 @@
 class Shark
 {
     constructor(){
-        this.x = random(50);
-        this.y = random(50);
+        this.x = width /2;
+        this.y = height / 2;
+        this.ySpeed = 2.2;
+        this.xSpeed = 2.8;
+        this.xDirection = 1;
+        this.yDirection = 1;
     }
     
-    display(imageKind, width, height){
-        image(imageKind, this.x, this.y, width, height);
+    display(imageKind){
+        image(imageKind, this.x, this.y, 60, 60);
         
     }
-    bounce(){
-            this.x = -this.x;
-            this.y = -this.y;
-            
-        }
+    
     yeetSkeet(){
             
-            this.x += random(1,2);
-            this.y += random(1, 2);
+            this.x = this.x + this.xSpeed * this.xDirection;
+            this.y = this.y + this.ySpeed * this.yDirection;
+
         }
     
 }
